@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok/controller/auth_controller.dart';
 
 import '../../widgets/from.dart';
 
@@ -10,12 +11,14 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _emailController = new TextEditingController();
+  final TextEditingController _usernameController = new TextEditingController();
 
-  final TextEditingController _setPasswordController = TextEditingController();
+  final TextEditingController _setPasswordController =
+      new TextEditingController();
 
   final TextEditingController _confirmPasswordController =
-      TextEditingController();
+      new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,30 +42,35 @@ class _SignUpState extends State<SignUp> {
                 const SizedBox(
                   height: 25,
                 ),
-                Stack(
-                  children: <Widget>[
-                    const CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          'https://static.vecteezy.com/system/resources/thumbnails/004/511/281/small/default-avatar-photo-placeholder-profile-picture-vector.jpg'),
-                      radius: 60,
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        padding: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Colors.white,
-                        ),
-                        child: const Icon(
-                          Icons.edit,
-                          size: 20,
-                          color: Colors.black,
+                InkWell(
+                  onTap: () {
+                    AuthController.instance.pickImage();
+                  },
+                  child: Stack(
+                    children: <Widget>[
+                      const CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            'https://static.vecteezy.com/system/resources/thumbnails/004/511/281/small/default-avatar-photo-placeholder-profile-picture-vector.jpg'),
+                        radius: 60,
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.white,
+                          ),
+                          child: const Icon(
+                            Icons.edit,
+                            size: 20,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: 25,
@@ -70,7 +78,7 @@ class _SignUpState extends State<SignUp> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   child: LoginTextField(
-                    controller: _emailController,
+                    controller: _usernameController,
                     myLabelText: "Username",
                     myIcon: Icons.person,
                     hide: false,
@@ -116,11 +124,18 @@ class _SignUpState extends State<SignUp> {
                   height: 30,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    AuthController.instance.signUp(
+                        _usernameController.text,
+                        _emailController.text,
+                        _setPasswordController.text,
+                        AuthController.instance.profilna);
+                  },
                   child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 50, vertical: 10),
-                      child: const Text('Sign Up')),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 10),
+                    child: const Text('Sign Up'),
+                  ),
                 ),
               ],
             ),
