@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok/controller/auth_controller.dart';
 
 import '../../widgets/from.dart';
 
@@ -58,7 +59,10 @@ class _LoginState extends State<Login> {
                 height: 30,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  AuthController.instance
+                      .login(_emailController.text, _passwordController.text);
+                },
                 child: Container(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 50, vertical: 10),

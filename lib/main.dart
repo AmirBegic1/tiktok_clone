@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiktok/constants.dart';
 import 'package:tiktok/controller/auth_controller.dart';
+import 'package:tiktok/view/screens/auth/login.dart';
 
 import 'view/screens/auth/register.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme:
           //postavljanje default backgrounda kroz main
           ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor),
-      home: const SignUp(),
+      home: const Login(),
     );
   }
 }
