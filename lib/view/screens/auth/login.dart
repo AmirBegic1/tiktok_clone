@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/from.dart';
 
-class Login extends StatelessWidget {
-  Login({Key? key}) : super(key: key);
-  TextEditingController _emailController = new TextEditingController();
-  TextEditingController _passwordController = new TextEditingController();
+class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final TextEditingController _emailController = TextEditingController();
+
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +34,7 @@ class Login extends StatelessWidget {
                 height: 25,
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: LoginTextField(
                   controller: _emailController,
                   myLabelText: "Email",

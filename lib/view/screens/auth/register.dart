@@ -2,12 +2,20 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/from.dart';
 
-class SignUp extends StatelessWidget {
-  SignUp({Key? key}) : super(key: key);
-  TextEditingController _emailController = new TextEditingController();
-  TextEditingController _setPasswordController = new TextEditingController();
-  TextEditingController _confirmPasswordController =
-      new TextEditingController();
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
+
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  final TextEditingController _emailController = TextEditingController();
+
+  final TextEditingController _setPasswordController = TextEditingController();
+
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +50,7 @@ class SignUp extends StatelessWidget {
                       bottom: 0,
                       right: 0,
                       child: Container(
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           color: Colors.white,

@@ -7,7 +7,7 @@ class LoginTextField extends StatelessWidget {
   final String myLabelText;
   final bool hide;
 
-  LoginTextField({
+  const LoginTextField({
     Key? key,
     required this.controller,
     required this.myLabelText,
