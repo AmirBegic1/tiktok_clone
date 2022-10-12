@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:tiktok/controller/auth_controller.dart';
 
 import '../../widgets/from.dart';
@@ -22,17 +23,9 @@ class _LoginState extends State<Login> {
         child: Container(
           alignment: Alignment.center,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'TikTok',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                ),
-              ),
               const SizedBox(
-                height: 25,
+                height: 50,
               ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -53,6 +46,16 @@ class _LoginState extends State<Login> {
                   myLabelText: "Password",
                   myIcon: Icons.lock,
                   hide: true,
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Container(
+                margin: const EdgeInsets.only(right: 155),
+                child: const Text(
+                  "Forgot password?",
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(
