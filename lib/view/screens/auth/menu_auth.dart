@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tiktok/view/screens/auth/login.dart';
 import 'package:tiktok/view/screens/auth/register.dart';
+import 'package:tiktok/view/screens/home_screen.dart';
 
 import '../../../constants.dart';
 
@@ -26,7 +28,12 @@ class _MenuAuthState extends State<MenuAuth> {
           backgroundColor: backgroundColor,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomeScreen()),
+              );
+            },
           ),
           bottom: const TabBar(
             tabs: [

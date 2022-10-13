@@ -1,9 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiktok/controller/profil_controller.dart';
+import 'package:tiktok/view/screens/Settings/PrivacyScreen.dart';
 
 import '../../controller/auth_controller.dart';
+import 'Settings/settings.dart';
 
 class ProfileScreen extends StatefulWidget {
   String uid;
@@ -38,9 +41,51 @@ class _ProfileScreenState extends State<ProfileScreen> {
               centerTitle: true,
               backgroundColor: Colors.transparent,
               leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
+                icon: const Icon(Icons.add),
                 onPressed: () {},
               ),
+              actions: [
+                Theme(
+                  data: Theme.of(context).copyWith(
+                    textTheme: TextTheme().apply(bodyColor: Colors.white),
+                    dividerColor: Colors.white,
+                    iconTheme: const IconThemeData(color: Colors.white),
+                  ),
+                  child: PopupMenuButton<int>(
+                    color: Colors.black,
+                    itemBuilder: (context) => [
+                      PopupMenuDivider(),
+                      const PopupMenuItem(
+                        value: 0,
+                        child: Text("Settings"),
+                      ),
+                      PopupMenuDivider(),
+                      const PopupMenuItem(
+                        value: 1,
+                        child: Text("Privacy Policy page"),
+                      ),
+                      PopupMenuDivider(),
+                      PopupMenuItem<int>(
+                        value: 2,
+                        child: Row(
+                          children: const [
+                            Icon(
+                              Icons.logout,
+                              color: Colors.red,
+                            ),
+                            SizedBox(
+                              width: 7,
+                            ),
+                            Text("Logout")
+                          ],
+                        ),
+                      ),
+                      PopupMenuDivider(),
+                    ],
+                    onSelected: ((item) => SelectedItem(context, item)),
+                  ),
+                ),
+              ],
             ),
             body: SingleChildScrollView(
               child: Container(
@@ -128,18 +173,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: Container(
                             alignment: Alignment.centerLeft,
                             child: Column(
-                              children: const [
+                              children: [
                                 Text(
-                                  '56',
-                                  style: TextStyle(
+                                  '${controller.user['likes']}',
+                                  style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 24),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
-                                Text(
+                                const Text(
                                   '  Likes  ',
                                   style: TextStyle(
                                       color: Colors.grey, fontSize: 15),
@@ -185,6 +230,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 30,
                     ),
                     const Text('bio dodat neki'),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    const Divider(
+                      color: Colors.white,
+                    ),
                   ],
                 ),
               ),
@@ -193,5 +244,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
         );
       },
     );
+  }
+
+  void SelectedItem(BuildContext context, item) {
+    switch (item) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Settigns()),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => PrivacyScreen()),
+        );
+        break;
+      case 2:
+        AuthController.instance.signOut();
+    }
   }
 }
