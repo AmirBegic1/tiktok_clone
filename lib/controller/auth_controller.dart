@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tiktok/model/user.dart';
 import 'package:tiktok/view/screens/auth/login.dart';
@@ -29,6 +30,7 @@ class AuthController extends GetxController {
     super.onReady();
     _user = Rx<User?>(FirebaseAuth.instance.currentUser);
     _user.bindStream(FirebaseAuth.instance.authStateChanges());
+
     ever(_user, _setInitialView);
   }
 
@@ -103,6 +105,10 @@ class AuthController extends GetxController {
       Get.snackbar("Error while logging in", e.toString());
     }
   }
+
+  Future<void> LoginWithGoogle() async {}
+
+  Future<void> logoutGoogle() async {}
 
   signOut() {
     FirebaseAuth.instance.signOut();
