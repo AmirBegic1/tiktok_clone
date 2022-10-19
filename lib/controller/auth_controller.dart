@@ -4,10 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tiktok/model/user.dart';
-import 'package:tiktok/view/screens/auth/login.dart';
+
 import 'package:tiktok/view/screens/home_screen.dart';
 
 import '../view/screens/auth/menu_auth.dart';
@@ -38,7 +37,7 @@ class AuthController extends GetxController {
     if (user == null) {
       Get.offAll(() => const MenuAuth());
     } else {
-      Get.offAll(() => HomeScreen());
+      Get.offAll(() => const HomeScreen());
     }
   }
 

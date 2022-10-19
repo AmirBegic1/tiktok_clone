@@ -2,16 +2,31 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Video {
   String name;
-  String vid;
+  String uid;
+  int likes;
+  int commentCount;
+  String videoUrl;
+  String thumbnail;
+  String profilePicture;
 
   Video({
     required this.name,
-    required this.vid,
+    required this.uid,
+    required this.likes,
+    required this.commentCount,
+    required this.videoUrl,
+    required this.thumbnail,
+    required this.profilePicture,
   });
 
   Map<String, dynamic> toJson() => {
         "name": name,
-        "vid": vid,
+        "uid": uid,
+        "likes": likes,
+        "commentCount": commentCount,
+        "videoUrl": videoUrl,
+        "thumbnail": thumbnail,
+        "profilePictures": profilePicture,
       };
 
   static Video fromSnap(DocumentSnapshot snap) {
@@ -19,7 +34,12 @@ class Video {
 
     return Video(
       name: snapshot['name'],
-      vid: snapshot['vid'],
+      uid: snapshot['uid'],
+      likes: snapshot['likes'],
+      commentCount: snapshot['commentCount'],
+      videoUrl: snapshot['videoUrl'],
+      thumbnail: snapshot['thumbnail'],
+      profilePicture: snapshot['profilePictures'],
     );
   }
 }
