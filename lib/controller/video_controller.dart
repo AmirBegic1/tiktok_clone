@@ -5,30 +5,25 @@ import 'package:get/get.dart';
 import '../model/video.dart';
 
 class VideoController extends GetxController {
-  final Rx<Map<String, dynamic>> _videoList = Rx<Map<String, dynamic>>({});
+  final Rx<List<Video>> _videoList = Rx<List<Video>>([]);
 
-  Map<String, dynamic> get videoList => _videoList.value;
-  final Rx<String> _vid = "".obs;
+  List<Video> get videoList => _videoList.value;
 
-  updateUserId(String vid) {
-    _vid.value = vid;
-    getVideoData();
-  }
-
-  getVideoData() async {
-    DocumentSnapshot videoDoc = await FirebaseFirestore.instance
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    _videoList.bindStream(FirebaseFirestore.instance
         .collection("videos")
-        .doc(_vid.value)
-        .get();
-
-    String name = videoDoc['name'];
-    String vid = videoDoc['vid'];
-
-    _videoList.value = {
-      'name': name.toString(),
-      'vid': vid.toString(),
-    };
-
-    update();
+        .snapshots()
+        .map((QuerySnapshot query) {
+      List<Video> retVal = [];
+      for (var element in query.docs) {
+        retVal.add(
+          Video.fromSnap(element),
+        );
+      }
+      return retVal;
+    }));
   }
 }
