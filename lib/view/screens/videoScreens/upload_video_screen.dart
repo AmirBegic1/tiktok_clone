@@ -77,7 +77,7 @@ class _UploadVideoState extends State<UploadVideo> {
           child: Container(
             width: 190,
             height: 50,
-            decoration: BoxDecoration(color: Colors.red),
+            decoration: const BoxDecoration(color: Colors.red),
             child: const Center(
               child: Text(
                 'Add video',

@@ -105,7 +105,7 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> LoginWithGoogle() async {}
+  Future<void> loginWithGoogle() async {}
 
   Future<void> logoutGoogle() async {}
 

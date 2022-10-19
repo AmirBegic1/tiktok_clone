@@ -11,14 +11,13 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  final TextEditingController _emailController = new TextEditingController();
-  final TextEditingController _usernameController = new TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
 
-  final TextEditingController _setPasswordController =
-      new TextEditingController();
+  final TextEditingController _setPasswordController = TextEditingController();
 
   final TextEditingController _confirmPasswordController =
-      new TextEditingController();
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {

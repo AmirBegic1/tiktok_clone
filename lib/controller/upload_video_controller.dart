@@ -46,7 +46,7 @@ class UploadVideoController extends GetxController {
     return videoUrl;
   }
 
-  uploadVideo(String name, String videoLoaction) async {
+  uploadVideo(String name, String naslov, String videoLoaction) async {
     try {
       String uid = FirebaseAuth.instance.currentUser!.uid;
       DocumentSnapshot userData =
@@ -68,18 +68,18 @@ class UploadVideoController extends GetxController {
         uid: uid,
         likes: 0,
         commentCount: 0,
-        videoUrl: "Video $len",
+        videoUrl: videoLink,
         thumbnail: thumbnail,
         profilePicture:
             (userData.data()! as Map<String, dynamic>)['profilePictures'],
+        naslov: naslov,
       );
-
-      Get.back();
 
       await FirebaseFirestore.instance
           .collection("videos")
           .doc("Video $len")
           .set(video.toJson());
+      Get.back();
     } catch (e) {
       Get.snackbar("Error while uploading video", e.toString());
     }

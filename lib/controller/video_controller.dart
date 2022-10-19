@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+
 import 'package:get/get.dart';
 
 import '../model/video.dart';
@@ -11,7 +11,6 @@ class VideoController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     _videoList.bindStream(FirebaseFirestore.instance
         .collection("videos")

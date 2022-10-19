@@ -575,7 +575,7 @@ packages:
     source: hosted
     version: "2.4.7"
   video_player_android:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: video_player_android
       url: "https://pub.dartlang.org"

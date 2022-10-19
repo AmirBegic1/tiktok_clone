@@ -12,8 +12,8 @@ const borderColor = Colors.grey;
 
 List stranice = [
   VideoScreen(),
-  Text("Discover"),
-  UploadVideo(),
-  Text("inbox"),
+  const Text("Discover"),
+  const UploadVideo(),
+  const Text("inbox"),
   ProfileScreen(uid: FirebaseAuth.instance.currentUser!.uid)
 ];

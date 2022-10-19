@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:tiktok/view/screens/auth/login.dart';
 import 'package:tiktok/view/screens/auth/register.dart';
 import 'package:tiktok/view/screens/home_screen.dart';

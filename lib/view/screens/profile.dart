@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiktok/controller/profil_controller.dart';
@@ -8,6 +8,7 @@ import 'package:tiktok/view/screens/Settings/PrivacyScreen.dart';
 import '../../controller/auth_controller.dart';
 import 'Settings/settings.dart';
 
+// ignore: must_be_immutable
 class ProfileScreen extends StatefulWidget {
   String uid;
   ProfileScreen({Key? key, required this.uid}) : super(key: key);
@@ -47,24 +48,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
               actions: [
                 Theme(
                   data: Theme.of(context).copyWith(
-                    textTheme: TextTheme().apply(bodyColor: Colors.white),
+                    textTheme: const TextTheme().apply(bodyColor: Colors.white),
                     dividerColor: Colors.white,
                     iconTheme: const IconThemeData(color: Colors.white),
                   ),
                   child: PopupMenuButton<int>(
                     color: Colors.black,
                     itemBuilder: (context) => [
-                      PopupMenuDivider(),
+                      const PopupMenuDivider(),
                       const PopupMenuItem(
                         value: 0,
                         child: Text("Settings"),
                       ),
-                      PopupMenuDivider(),
+                      const PopupMenuDivider(),
                       const PopupMenuItem(
                         value: 1,
                         child: Text("Privacy Policy page"),
                       ),
-                      PopupMenuDivider(),
+                      const PopupMenuDivider(),
                       PopupMenuItem<int>(
                         value: 2,
                         child: Row(
@@ -80,16 +81,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ],
                         ),
                       ),
-                      PopupMenuDivider(),
+                      const PopupMenuDivider(),
                     ],
-                    onSelected: ((item) => SelectedItem(context, item)),
+                    onSelected: ((item) => selectedItem(context, item)),
                   ),
                 ),
               ],
             ),
             body: SingleChildScrollView(
               child: Container(
-                margin: EdgeInsets.only(top: 30),
+                margin: const EdgeInsets.only(top: 30),
                 alignment: Alignment.center,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -102,8 +103,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         height: 100,
                         width: 100,
                         placeholder: (context, url) =>
-                            CircularProgressIndicator(),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
+                            const CircularProgressIndicator(),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                     const SizedBox(
@@ -246,18 +248,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  void SelectedItem(BuildContext context, item) {
+  void selectedItem(BuildContext context, item) {
     switch (item) {
       case 0:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Settigns()),
+          MaterialPageRoute(builder: (context) => const Settigns()),
         );
         break;
       case 1:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => PrivacyScreen()),
+          MaterialPageRoute(builder: (context) => const PrivacyScreen()),
         );
         break;
       case 2:

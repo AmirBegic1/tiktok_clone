@@ -10,7 +10,7 @@ import '../../../controller/upload_video_controller.dart';
 class ConfirmVideoScreen extends StatefulWidget {
   final File videoFile;
   final String videoPath;
-  ConfirmVideoScreen(
+  const ConfirmVideoScreen(
       {Key? key, required this.videoFile, required this.videoPath})
       : super(key: key);
 
@@ -21,6 +21,7 @@ class ConfirmVideoScreen extends StatefulWidget {
 class _ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
   late VideoPlayerController controller;
   TextEditingController name = TextEditingController();
+  TextEditingController naslov = TextEditingController();
   UploadVideoController upoladVideoController =
       Get.put(UploadVideoController());
 
@@ -81,14 +82,14 @@ class _ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
                             ),
                           ),
                         ),
-                        controller: name,
+                        controller: naslov,
                       ),
                     ),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       upoladVideoController.uploadVideo(
-                          name.text, widget.videoPath);
+                          name.text, widget.videoPath, naslov.text);
                     },
                     child: const Text(
                       "Add your video",

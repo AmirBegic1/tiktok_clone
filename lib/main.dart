@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme:
           //postavljanje default backgrounda kroz main
           ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
