@@ -6,6 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:get/get.dart';
 import 'package:tiktok/model/video.dart';
+import 'package:tiktok/view/screens/home_screen.dart';
 import 'package:video_compress/video_compress.dart';
 
 class UploadVideoController extends GetxController {
@@ -46,7 +47,7 @@ class UploadVideoController extends GetxController {
     return videoUrl;
   }
 
-  uploadVideo(String name, String naslov, String videoLoaction) async {
+  uploadVideo(String naslov, String videoLoaction) async {
     try {
       String uid = FirebaseAuth.instance.currentUser!.uid;
       DocumentSnapshot userData =
@@ -79,7 +80,8 @@ class UploadVideoController extends GetxController {
           .collection("videos")
           .doc("Video $len")
           .set(video.toJson());
-      Get.back();
+      Get.to(HomeScreen());
+      Get.snackbar("Success", "Your video has been upoladed to TikTokClone!");
     } catch (e) {
       Get.snackbar("Error while uploading video", e.toString());
     }

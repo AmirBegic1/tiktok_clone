@@ -86,10 +86,13 @@ class _ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 5,
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       upoladVideoController.uploadVideo(
-                          name.text, widget.videoPath, naslov.text);
+                          naslov.text, widget.videoPath);
                     },
                     child: const Text(
                       "Add your video",
