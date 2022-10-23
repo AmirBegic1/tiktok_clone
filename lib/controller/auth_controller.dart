@@ -14,6 +14,8 @@ import '../view/screens/auth/menu_auth.dart';
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
   File? profilna;
+  //da ne bude nullable
+  User? get user => _user.value;
 
   pickImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);

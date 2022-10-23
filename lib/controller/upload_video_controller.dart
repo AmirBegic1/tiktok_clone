@@ -80,7 +80,7 @@ class UploadVideoController extends GetxController {
           .collection("videos")
           .doc("Video $len")
           .set(video.toJson());
-      Get.to(HomeScreen());
+      Get.to(() => HomeScreen());
       Get.snackbar("Success", "Your video has been upoladed to TikTokClone!");
     } catch (e) {
       Get.snackbar("Error while uploading video", e.toString());

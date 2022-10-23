@@ -106,7 +106,8 @@ class VideoScreen extends StatelessWidget {
                                 Column(
                                   children: [
                                     InkWell(
-                                      onTap: () {},
+                                      // onTap: () => videoController
+                                      //     .likeUploadedVideo(data.uid),
                                       child: const Icon(
                                         Icons.favorite,
                                         size: 40,
