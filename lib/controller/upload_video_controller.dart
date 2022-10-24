@@ -74,6 +74,7 @@ class UploadVideoController extends GetxController {
         profilePicture:
             (userData.data()! as Map<String, dynamic>)['profilePictures'],
         naslov: naslov,
+        id: "Video $len",
       );
 
       await FirebaseFirestore.instance

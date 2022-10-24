@@ -125,7 +125,9 @@ class VideoScreen extends StatelessWidget {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        Get.to(() => Comments());
+                                        Get.to(() => Comments(
+                                              id: data.id,
+                                            ));
                                       },
                                       child: const Icon(
                                         Icons.comment,
