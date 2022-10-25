@@ -39,7 +39,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ),
         body: searchController.trazeniUser.isEmpty
-            ? Center(
+            ? const Center(
                 child: Text(
                   'Search for users!',
                   style: TextStyle(

@@ -15,7 +15,7 @@ class Comments extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Comments"),
+          title: const Text("Comments"),
           backgroundColor: Colors.black,
           centerTitle: true,
         ),
@@ -65,13 +65,13 @@ class Comments extends StatelessWidget {
                                   timeago.format(
                                     comments.date.toDate(),
                                   ),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 12, color: Colors.white),
                                 ),
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                Text(
+                                const Text(
                                   '10 likes',
                                   style: TextStyle(
                                       fontSize: 12,
@@ -99,7 +99,7 @@ class Comments extends StatelessWidget {
                   title: TextFormField(
                     controller: _commentController,
                     style: const TextStyle(fontSize: 16, color: Colors.white),
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Comment: ',
                       labelStyle: TextStyle(
                           fontSize: 20,

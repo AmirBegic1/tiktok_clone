@@ -205,7 +205,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            Get.to(() => Settigns());
+                            Get.to(() => const Settigns());
                             Get.snackbar("Going to settings page",
                                 "Edit profile on settings page!");
                           },
@@ -243,12 +243,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       color: Colors.white,
                     ),
                     GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 1,
-                            crossAxisSpacing: 5),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 1,
+                                crossAxisSpacing: 5),
                         itemCount: controller.user['thumbnails'].length,
                         itemBuilder: (context, index) {
                           String thumbnail =
@@ -257,7 +258,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             fit: BoxFit.cover,
                             imageUrl: thumbnail,
                             errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                                const Icon(Icons.error),
                           );
                         })
 
