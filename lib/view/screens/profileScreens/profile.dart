@@ -204,7 +204,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(() => Settigns());
+                            Get.snackbar("Going to settings page",
+                                "Edit profile on settings page!");
+                          },
                           child: Container(
                             alignment: Alignment.center,
                             padding: const EdgeInsets.symmetric(
@@ -238,6 +242,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     const Divider(
                       color: Colors.white,
                     ),
+                    GridView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 1,
+                            crossAxisSpacing: 5),
+                        itemCount: controller.user['thumbnails'].length,
+                        itemBuilder: (context, index) {
+                          String thumbnail =
+                              controller.user['thumbnails'][index];
+                          return CachedNetworkImage(
+                            fit: BoxFit.cover,
+                            imageUrl: thumbnail,
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          );
+                        })
+
+                    //ovdje stavit ispisivanje videa!
                   ],
                 ),
               ),

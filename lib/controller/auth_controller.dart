@@ -14,18 +14,10 @@ import '../view/screens/auth/menu_auth.dart';
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
   File? profilna;
-  //da ne bude nullable
-  User? get user => _user.value;
-
-  pickImage() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image == null) return;
-
-    final img = File(image.path);
-    profilna = img;
-  }
-
   late Rx<User?> _user;
+  //da ne bude nullable
+  User get user => _user.value!;
+
   @override
   void onReady() {
     super.onReady();
@@ -33,6 +25,14 @@ class AuthController extends GetxController {
     _user.bindStream(FirebaseAuth.instance.authStateChanges());
 
     ever(_user, _setInitialView);
+  }
+
+  pickImage() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (image == null) return;
+
+    final img = File(image.path);
+    profilna = img;
   }
 
   _setInitialView(User? user) {
