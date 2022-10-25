@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tiktok/view/screens/profile.dart';
+import 'package:tiktok/view/screens/profileScreens/profile.dart';
+import 'package:tiktok/view/screens/searchScreen/search.dart';
 import 'package:tiktok/view/screens/videoScreens/upload_video_screen.dart';
 import 'package:tiktok/view/screens/videoScreens/video_screen.dart';
 
@@ -14,6 +15,6 @@ List stranice = [
   VideoScreen(),
   const Text("Discover"),
   const UploadVideo(),
-  const Text("inbox"),
+  SearchScreen(),
   ProfileScreen(uid: FirebaseAuth.instance.currentUser!.uid)
 ];

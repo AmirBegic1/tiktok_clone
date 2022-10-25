@@ -33,10 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.compass_calibration_rounded,
+              Icons.live_tv,
               size: 25,
             ),
-            label: "Discover",
+            label: "Go live",
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -47,10 +47,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.message_outlined,
+              Icons.search,
               size: 25,
             ),
-            label: "Inbox",
+            label: "Search",
           ),
           BottomNavigationBarItem(
             icon: Icon(

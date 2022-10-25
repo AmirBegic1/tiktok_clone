@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:tiktok/controller/profil_controller.dart';
 import 'package:tiktok/view/screens/Settings/PrivacyScreen.dart';
 
-import '../../controller/auth_controller.dart';
-import 'Settings/settings.dart';
+import '../../../controller/auth_controller.dart';
+import '../Settings/settings.dart';
 
 // ignore: must_be_immutable
 class ProfileScreen extends StatefulWidget {
