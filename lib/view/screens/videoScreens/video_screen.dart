@@ -70,6 +70,7 @@ class VideoScreen extends StatelessWidget {
                             child: Container(
                               padding: const EdgeInsets.only(
                                 left: 20,
+                                bottom: 15,
                               ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -98,14 +99,19 @@ class VideoScreen extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            width: 100,
-                            margin: EdgeInsets.only(top: size.height / 5),
+                            width: 55,
+                            margin: EdgeInsets.only(
+                              top: size.height / 5,
+                            ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                buildProfile(data.profilePicture),
                                 Column(
                                   children: [
+                                    buildProfile(data.profilePicture),
+                                    const SizedBox(
+                                      height: 23,
+                                    ),
                                     InkWell(
                                       onTap: () => videoController
                                           .likeUploadedVideo(data.id),
@@ -122,6 +128,9 @@ class VideoScreen extends StatelessWidget {
                                       data.likes.toString(),
                                       style: const TextStyle(
                                           fontSize: 10, color: Colors.white),
+                                    ),
+                                    const SizedBox(
+                                      height: 23,
                                     ),
                                     InkWell(
                                       onTap: () {
@@ -142,6 +151,9 @@ class VideoScreen extends StatelessWidget {
                                       data.commentCount.toString(),
                                       style: const TextStyle(
                                           fontSize: 10, color: Colors.white),
+                                    ),
+                                    const SizedBox(
+                                      height: 23,
                                     ),
                                     InkWell(
                                       onTap: () {},

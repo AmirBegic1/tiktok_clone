@@ -43,6 +43,7 @@ dependencies:
   video_player_android: 
   sliding_up_panel: ^2.0.0+1
   timeago: 
+  flutter_signin_button: 
 
   
 

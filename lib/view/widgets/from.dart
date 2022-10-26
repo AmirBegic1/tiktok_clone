@@ -21,6 +21,9 @@ class LoginTextField extends StatelessWidget {
       obscureText: hide,
       controller: controller,
       decoration: InputDecoration(
+        prefixIconColor: Colors.white,
+        iconColor: Colors.red,
+        labelStyle: const TextStyle(color: Colors.white),
         icon: Icon(myIcon),
         labelText: myLabelText,
         enabledBorder: OutlineInputBorder(
@@ -32,7 +35,7 @@ class LoginTextField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
           borderSide: const BorderSide(
-            color: borderColor,
+            color: Colors.red,
           ),
         ),
       ),

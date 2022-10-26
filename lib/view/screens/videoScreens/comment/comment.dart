@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:tiktok/controller/comment_controller.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
+// ignore: must_be_immutable
 class Comments extends StatelessWidget {
   final String id;
   Comments({Key? key, required this.id}) : super(key: key);
@@ -41,7 +42,7 @@ class Comments extends StatelessWidget {
                             title: Row(
                               children: [
                                 Text(
-                                  '${comments.username}',
+                                  comments.username,
                                   style: const TextStyle(
                                       fontSize: 20,
                                       color: Colors.red,

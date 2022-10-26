@@ -61,15 +61,26 @@ class _LoginState extends State<Login> {
               const SizedBox(
                 height: 30,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  AuthController.instance
-                      .login(_emailController.text, _passwordController.text);
-                },
-                child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 10),
-                    child: const Text('Login')),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                child: ElevatedButton(
+                  onPressed: () {
+                    AuthController.instance
+                        .login(_emailController.text, _passwordController.text);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      minimumSize: const Size.fromHeight(8),
+                      padding: const EdgeInsets.all(8)),
+                  child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 10),
+                      child: const Text(
+                        'Log in',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
+                ),
               ),
             ],
           ),

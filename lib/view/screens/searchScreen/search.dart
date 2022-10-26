@@ -6,7 +6,7 @@ import 'package:tiktok/model/user.dart';
 import '../profileScreens/profile.dart';
 
 class SearchScreen extends StatefulWidget {
-  SearchScreen({Key? key}) : super(key: key);
+  const SearchScreen({Key? key}) : super(key: key);
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -41,9 +41,9 @@ class _SearchScreenState extends State<SearchScreen> {
         body: searchController.trazeniUser.isEmpty
             ? const Center(
                 child: Text(
-                  'Search for users!',
+                  'Tap on search field to search users!',
                   style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 22,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),
@@ -67,7 +67,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                   ProfileScreen(uid: user.uid)));
                     },
                   );
-                }),
+                },
+              ),
       );
     });
   }
