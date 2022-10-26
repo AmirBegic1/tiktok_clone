@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:tiktok/view/screens/auth/login.dart';
 import 'package:tiktok/view/screens/auth/register.dart';
-import 'package:tiktok/view/screens/home_screen.dart';
 
 import '../../../constants.dart';
 
@@ -29,13 +29,12 @@ class _MenuAuthState extends State<MenuAuth> {
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomeScreen()),
-              );
+              Get.back();
             },
           ),
           bottom: const TabBar(
+            labelColor: Colors.white,
+            indicatorColor: Colors.red,
             tabs: [
               Tab(
                 text: "Register",
@@ -46,7 +45,12 @@ class _MenuAuthState extends State<MenuAuth> {
             ],
           ),
         ),
-        body: const TabBarView(children: [SignUp(), Login()]),
+        body: const TabBarView(
+          children: [
+            SignUp(),
+            Login(),
+          ],
+        ),
       ),
     );
   }

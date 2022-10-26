@@ -8,6 +8,7 @@ class CommentController extends GetxController {
   final Rx<List<Comments>> _comments = Rx<List<Comments>>([]);
   List<Comments> get comments => _comments.value;
 
+  // ignore: non_constant_identifier_names
   String _IdPosta = "";
 
   updateIdOdPosta(String id) {

@@ -37,6 +37,7 @@ class _SignUpState extends State<SignUp> {
                   },
                   child: Stack(
                     children: <Widget>[
+                      //povuc live sliku sa ? : operatorom!
                       const CircleAvatar(
                         backgroundImage: NetworkImage(
                             'https://static.vecteezy.com/system/resources/thumbnails/004/511/281/small/default-avatar-photo-placeholder-profile-picture-vector.jpg'),
@@ -112,18 +113,30 @@ class _SignUpState extends State<SignUp> {
                 const SizedBox(
                   height: 30,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    AuthController.instance.signUp(
-                        _usernameController.text,
-                        _emailController.text,
-                        _setPasswordController.text,
-                        AuthController.instance.profilna);
-                  },
-                  child: Container(
+                Center(
+                  child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 10),
-                    child: const Text('Sign Up'),
+                        horizontal: 20, vertical: 10),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        AuthController.instance.signUp(
+                            _usernameController.text,
+                            _emailController.text,
+                            _setPasswordController.text,
+                            AuthController.instance.profilna);
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                          minimumSize: const Size.fromHeight(8),
+                          padding: const EdgeInsets.all(8)),
+                      child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 50, vertical: 10),
+                          child: const Text(
+                            'Sign Up',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )),
+                    ),
                   ),
                 ),
               ],

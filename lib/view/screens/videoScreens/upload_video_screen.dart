@@ -72,24 +72,69 @@ class _UploadVideoState extends State<UploadVideo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: InkWell(
-          onTap: () => optionMenu(context),
-          child: Container(
-            width: 190,
-            height: 50,
-            decoration: const BoxDecoration(color: Colors.red),
-            child: const Center(
-              child: Text(
-                'Add video',
+      appBar: AppBar(
+        title: const Text(
+          "Add your video to TikTok clone app",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.black,
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(10),
+              child: const Text(
+                "You can choose to upload your video to TikTok app",
                 style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(
+              height: 220,
+            ),
+            const Text(
+              "Choose from gallery",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Center(
+              child: InkWell(
+                onTap: () => optionMenu(context),
+                child: Container(
+                  width: 190,
+                  height: 50,
+                  decoration: const BoxDecoration(color: Colors.red),
+                  child: const Center(
+                    child: Text(
+                      'Add video',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
+            const SizedBox(
+              height: 270,
+            ),
+            const Text(
+              "Please be sure what you upolad, other users can see your video!",
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );
