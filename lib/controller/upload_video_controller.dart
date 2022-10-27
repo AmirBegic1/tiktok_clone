@@ -67,7 +67,7 @@ class UploadVideoController extends GetxController {
       Video video = Video(
         name: (userData.data()! as Map<String, dynamic>)['name'],
         uid: uid,
-        likes: 0,
+        likes: [],
         commentCount: 0,
         videoUrl: videoLink,
         thumbnail: thumbnail,

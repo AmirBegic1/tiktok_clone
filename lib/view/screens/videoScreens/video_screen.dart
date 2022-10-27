@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tiktok/controller/auth_controller.dart';
 import 'package:tiktok/controller/video_controller.dart';
 import 'package:tiktok/view/screens/videoScreens/comment/comment.dart';
 
@@ -115,17 +116,21 @@ class VideoScreen extends StatelessWidget {
                                     InkWell(
                                       onTap: () => videoController
                                           .likeUploadedVideo(data.id),
-                                      child: const Icon(
+                                      child: Icon(
                                         Icons.favorite,
                                         size: 40,
-                                        color: Colors.red,
+                                        color: data.likes.contains(
+                                                AuthController
+                                                    .instance.user.uid)
+                                            ? Colors.red
+                                            : Colors.white,
                                       ),
                                     ),
                                     const SizedBox(
                                       height: 7,
                                     ),
                                     Text(
-                                      data.likes.toString(),
+                                      data.likes.length.toString(),
                                       style: const TextStyle(
                                           fontSize: 10, color: Colors.white),
                                     ),

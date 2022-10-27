@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Video {
   String name;
   String uid;
-  int likes;
+  List likes;
   int commentCount;
   String videoUrl;
   String thumbnail;

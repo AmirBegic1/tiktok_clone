@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tiktok/controller/auth_controller.dart';
 import 'package:tiktok/controller/comment_controller.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -70,23 +71,28 @@ class Comments extends StatelessWidget {
                                       fontSize: 12, color: Colors.white),
                                 ),
                                 const SizedBox(
-                                  width: 10,
+                                  width: 14,
                                 ),
-                                const Text(
-                                  '10 likes',
-                                  style: TextStyle(
-                                      fontSize: 12,
+                                Text(
+                                  '${comments.likes.length} likes ',
+                                  style: const TextStyle(
+                                      fontSize: 14,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
                             trailing: InkWell(
-                              onTap: () {},
-                              child: const Icon(
+                              onTap: () {
+                                commentController.likeComment(comments.id);
+                              },
+                              child: Icon(
                                 Icons.favorite,
                                 size: 25,
-                                color: Colors.red,
+                                color: comments.likes.contains(
+                                        AuthController.instance.user.uid)
+                                    ? Colors.red
+                                    : Colors.white,
                               ),
                             ),
                           );

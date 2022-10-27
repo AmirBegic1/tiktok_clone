@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:tiktok/controller/auth_controller.dart';
 
 import '../model/comments.dart';
 
@@ -80,6 +81,36 @@ class CommentController extends GetxController {
       }
     } catch (e) {
       Get.snackbar("Error", e.toString());
+    }
+  }
+
+  likeComment(String id) async {
+    var uid = AuthController.instance.user.uid;
+    DocumentSnapshot doc = await FirebaseFirestore.instance
+        .collection('videos')
+        .doc(_IdPosta)
+        .collection('comments')
+        .doc(id)
+        .get();
+
+    if ((doc.data()! as dynamic)['likes'].contains(uid)) {
+      await FirebaseFirestore.instance
+          .collection('videos')
+          .doc(_IdPosta)
+          .collection('comments')
+          .doc(id)
+          .update({
+        'likes': FieldValue.arrayRemove([uid]),
+      });
+    } else {
+      await FirebaseFirestore.instance
+          .collection('videos')
+          .doc(_IdPosta)
+          .collection('comments')
+          .doc(id)
+          .update({
+        'likes': FieldValue.arrayUnion([uid]),
+      });
     }
   }
 }
