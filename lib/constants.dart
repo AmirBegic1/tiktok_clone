@@ -16,6 +16,6 @@ List stranice = [
   VideoScreen(),
   const LiveScreen(),
   const UploadVideo(),
-  SearchScreen(),
+  const SearchScreen(),
   ProfileScreen(uid: FirebaseAuth.instance.currentUser!.uid)
 ];

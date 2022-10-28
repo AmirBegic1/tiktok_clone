@@ -38,6 +38,8 @@ class AuthController extends GetxController {
     if (user == null) {
       Get.offAll(() => const MenuLogin());
     } else {
+      Get.snackbar("Wellcome back",
+          "Have a nice time ${user.displayName.toString()} on TikTok");
       Get.offAll(() => const HomeScreen());
     }
   }

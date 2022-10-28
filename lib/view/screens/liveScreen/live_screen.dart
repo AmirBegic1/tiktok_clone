@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tiktok/view/screens/liveScreen/live_chat.dart';
+
+import '../auth/menu_auth.dart';
 
 class LiveScreen extends StatelessWidget {
   const LiveScreen({Key? key}) : super(key: key);
@@ -22,19 +26,45 @@ class LiveScreen extends StatelessWidget {
             child: Column(
               children: [
                 Column(
-                  children: const [
-                    Text("Go live with TikTok App in just one click!"),
-                    SizedBox(
+                  children: [
+                    const Text("Go live with TikTok App in just one click!"),
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text("Every user in this app can view your live video!"),
-                    Padding(
+                    const Text(
+                        "Every user in this app can view your live video!"),
+                    const Padding(
                       padding: EdgeInsets.only(
                         bottom: 10,
                       ),
-                    )
+                    ),
+                    const SizedBox(
+                      height: 100,
+                    ),
+                    Column(
+                      children: [
+                        Image.asset('assets/slika3.png'),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 80,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 60),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Get.to(() => const ChatPage());
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                            minimumSize: const Size.fromHeight(10),
+                            padding: const EdgeInsets.all(20)),
+                        child: const Text('Start live video!'),
+                      ),
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
