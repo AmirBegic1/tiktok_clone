@@ -210,17 +210,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             backgroundColor: Colors.red,
                           ),
                           onPressed: () {
-                            Get.to(() => const Settigns());
-                            Get.snackbar("Going to settings page",
-                                "Edit profile on settings page!");
+                            if (widget.uid ==
+                                AuthController.instance.user.uid) {
+                              Get.to(() => const Settigns());
+                              Get.snackbar("Going to settings page",
+                                  "Edit profile on settings page!");
+                            } else {
+                              Get.back();
+                            }
                           },
                           child: Container(
                             alignment: Alignment.center,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 30, vertical: 20),
-                            child: const Text(
-                              'Edit profile',
-                            ),
+                            child: Text(
+                                widget.uid == AuthController.instance.user.uid
+                                    ? 'Edit profile'
+                                    : 'Go back'),
                           ),
                         ),
                         const SizedBox(
@@ -243,7 +249,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     const SizedBox(
                       height: 30,
                     ),
-                    const Text('bio dodat neki'),
+                    Text('Videos of @${controller.user['name']}'),
                     const SizedBox(
                       height: 30,
                     ),

@@ -38,9 +38,9 @@ class ProfilController extends GetxController {
     int followers = 0;
     int following = 0;
 
-    // for (var item in mojVideo.docs) {
-    //   likes += (item.data()['likes'] as List).length;
-    // }
+    for (var item in mojVideo.docs) {
+      likes += (item.data()['likes'] as List).length;
+    }
 
     var followersNumber = await FirebaseFirestore.instance
         .collection("users")
