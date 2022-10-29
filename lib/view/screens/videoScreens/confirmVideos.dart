@@ -74,6 +74,7 @@ class _ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
                       width: MediaQuery.of(context).size.width - 20,
                       child: TextField(
                         decoration: InputDecoration(
+                          iconColor: Colors.red,
                           labelText: 'Name of video',
                           prefixIcon: const Icon(Icons.closed_caption),
                           enabledBorder: OutlineInputBorder(
@@ -90,14 +91,22 @@ class _ConfirmVideoScreenState extends State<ConfirmVideoScreen> {
                   const SizedBox(
                     height: 5,
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      upoladVideoController.uploadVideo(
-                          naslov.text, widget.videoPath);
-                    },
-                    child: const Text(
-                      "Add your video",
-                      style: TextStyle(fontSize: 20, color: Colors.white),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 60),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        upoladVideoController.uploadVideo(
+                            naslov.text, widget.videoPath);
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.red,
+                          minimumSize: const Size.fromHeight(10),
+                          padding: const EdgeInsets.all(15)),
+                      child: const Text(
+                        "Add your video",
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
                     ),
                   ),
                 ],
