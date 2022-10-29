@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:tiktok/controller/auth_controller.dart';
 
@@ -53,9 +55,51 @@ class _LoginState extends State<Login> {
               ),
               Container(
                 margin: const EdgeInsets.only(right: 155),
-                child: const Text(
-                  "Forgot password?",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                child: TextButton(
+                  child: const Text(
+                    "Forgot Password?",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    Get.defaultDialog(
+                      radius: 10,
+                      backgroundColor: Colors.black,
+                      title: 'Enter your email to reset your password',
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 20),
+                            child: LoginTextField(
+                              controller: _emailController,
+                              myLabelText: "Email",
+                              myIcon: Icons.email,
+                              hide: false,
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.all(25),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
+                              ),
+                              child: const Text(
+                                'Send request',
+                                style: TextStyle(fontSize: 20.0),
+                              ),
+                              onPressed: () {
+                                FirebaseAuth.instance
+                                    .sendPasswordResetEmail(
+                                        email: _emailController.text)
+                                    .then((value) => Get.back());
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ),
               const SizedBox(

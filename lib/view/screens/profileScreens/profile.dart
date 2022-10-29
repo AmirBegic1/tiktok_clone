@@ -103,7 +103,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         height: 100,
                         width: 100,
                         placeholder: (context, url) =>
-                            const CircularProgressIndicator(),
+                            const CircularProgressIndicator(
+                          color: Colors.red,
+                        ),
                         errorWidget: (context, url, error) =>
                             const Icon(Icons.error),
                       ),
@@ -204,6 +206,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                          ),
                           onPressed: () {
                             Get.to(() => const Settigns());
                             Get.snackbar("Going to settings page",
@@ -222,6 +227,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           width: 10,
                         ),
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                          ),
                           onPressed: () {},
                           child: Container(
                             alignment: Alignment.center,
@@ -240,7 +248,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 30,
                     ),
                     const Divider(
-                      color: Colors.white,
+                      color: Colors.red,
                     ),
                     GridView.builder(
                         physics: const NeverScrollableScrollPhysics(),
@@ -249,7 +257,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 childAspectRatio: 1,
-                                crossAxisSpacing: 5),
+                                crossAxisSpacing: 6,
+                                mainAxisSpacing: 6),
                         itemCount: controller.user['thumbnails'].length,
                         itemBuilder: (context, index) {
                           String thumbnail =

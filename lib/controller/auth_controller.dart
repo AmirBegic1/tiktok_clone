@@ -1,11 +1,13 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tiktok/model/user.dart';
+import 'package:tiktok/view/screens/auth/menu_auth.dart';
 import 'package:tiktok/view/screens/auth/menu_auth_screens/menu_login.dart';
 
 import 'package:tiktok/view/screens/home_screen.dart';
@@ -112,8 +114,15 @@ class AuthController extends GetxController {
 
   Future<void> logoutGoogle() async {}
 
-  signOut() {
-    FirebaseAuth.instance.signOut();
-    Get.back();
+  signOut() async {
+    await FirebaseAuth.instance
+        .signOut()
+        .then((value) => Get.offAll(MenuLogin()));
   }
+
+  deleteAccount() async {
+    await user.delete();
+  }
+
+  void updateUsername(String tekst) async {}
 }
