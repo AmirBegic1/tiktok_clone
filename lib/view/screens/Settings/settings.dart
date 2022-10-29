@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiktok/view/screens/auth/menu_auth_screens/menu_login.dart';
@@ -19,8 +19,6 @@ class Settigns extends StatefulWidget {
 class _SettignsState extends State<Settigns> {
   final _usernameController = TextEditingController();
   final _emailController = TextEditingController();
-  final _newPasswordController = TextEditingController();
-  final _confirmNewPasswordController = TextEditingController();
 
   final ProfilController profilController = Get.put(ProfilController());
 

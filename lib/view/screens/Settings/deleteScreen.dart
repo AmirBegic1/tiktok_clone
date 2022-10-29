@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DeleteScreen extends StatefulWidget {
-  DeleteScreen({Key? key}) : super(key: key);
+  const DeleteScreen({Key? key}) : super(key: key);
 
   @override
   State<DeleteScreen> createState() => _DeleteScreenState();

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiktok/view/screens/liveScreen/live_chat.dart';
 
-import '../auth/menu_auth.dart';
-
 class LiveScreen extends StatelessWidget {
   const LiveScreen({Key? key}) : super(key: key);
 

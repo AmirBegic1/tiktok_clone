@@ -1,11 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiktok/controller/chat_controller.dart';
-import 'package:tiktok/view/widgets/chat_head.dart';
 
 import '../../../model/user.dart';
-import '../profileScreens/profile.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -23,7 +20,7 @@ class _ChatPageState extends State<ChatPage> {
       return SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            title: Text("Chat rooms"),
+            title: const Text("Chat rooms"),
             centerTitle: true,
             backgroundColor: Colors.black,
           ),

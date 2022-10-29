@@ -8,7 +8,7 @@ class SplashController extends GetxController
 
   @override
   void onInit() {
-    Future.delayed(Duration(seconds: 3));
+    Future.delayed(const Duration(seconds: 3));
     super.onInit();
   }
 }
