@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -5,11 +7,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:get/get.dart';
+
 import 'package:tiktok/model/video.dart';
 import 'package:tiktok/view/screens/home_screen.dart';
 import 'package:video_compress/video_compress.dart';
 
 class UploadVideoController extends GetxController {
+  static UploadVideoController instance = Get.find();
+  // var uuid = Uuid();
   // Future selectVideo() async {
   //   final result = await FilePicker.platform.pickFiles();
 
@@ -18,9 +23,13 @@ class UploadVideoController extends GetxController {
 
   _kompresVidea(String videoLocation) async {
     final kompresianVideo = await VideoCompress.compressVideo(videoLocation,
-        quality: VideoQuality.MediumQuality);
+        quality: VideoQuality.DefaultQuality);
     return kompresianVideo!.file;
   }
+
+  // Future selectFile(String videoLocation) async {
+  //   final result = await FilePicker.platform.pickFiles();
+  // }
 
   Future<String> upoladVideoToFirebase(String id, String videoLocation) async {
     Reference ref = FirebaseStorage.instance.ref().child('videos').child(id);
@@ -32,7 +41,7 @@ class UploadVideoController extends GetxController {
     return videoUrl;
   }
 
-  getThumbnail(String videoLocation) async {
+  Future<File> _getThumbnail(String videoLocation) async {
     final thumbnail = await VideoCompress.getFileThumbnail(videoLocation);
     return thumbnail;
   }
@@ -41,7 +50,8 @@ class UploadVideoController extends GetxController {
     Reference ref =
         FirebaseStorage.instance.ref().child('thumbnails').child(id);
 
-    UploadTask upoladVideoTask = ref.putFile(await getThumbnail(videoLocation));
+    UploadTask upoladVideoTask =
+        ref.putFile(await _getThumbnail(videoLocation));
     TaskSnapshot snap = await upoladVideoTask;
     String videoUrl = await snap.ref.getDownloadURL();
     return videoUrl;
@@ -49,6 +59,8 @@ class UploadVideoController extends GetxController {
 
   uploadVideo(String naslov, String videoLoaction) async {
     try {
+      //video id - uuid
+      // String id = uuid.v1();
       String uid = FirebaseAuth.instance.currentUser!.uid;
       DocumentSnapshot userData =
           await FirebaseFirestore.instance.collection('users').doc(uid).get();
@@ -84,6 +96,7 @@ class UploadVideoController extends GetxController {
       Get.to(() => const HomeScreen());
       Get.snackbar("Success", "Your video has been upoladed to TikTokClone!");
     } catch (e) {
+      print(e);
       Get.snackbar("Error while uploading video", e.toString());
     }
   }

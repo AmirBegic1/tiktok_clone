@@ -38,19 +38,21 @@ dependencies:
   image_picker: ^0.8.6
   cached_network_image: ^3.2.2
   intl: 
-  file_picker: 
+  file_picker: ^5.2.2 
   video_compress: ^3.1.1
-  video_player_android: 
+  
   sliding_up_panel: ^2.0.0+1
   timeago: 
   flutter_signin_button: 
+  responsive_framework: ^0.2.0
+  video_player: ^2.4.7
 
   
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  video_player: ^2.4.7
+  
   flutter_native_splash: 
 
 dev_dependencies:

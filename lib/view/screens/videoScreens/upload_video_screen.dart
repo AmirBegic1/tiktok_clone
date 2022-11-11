@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'confirmVideos.dart';
@@ -15,13 +16,14 @@ class UploadVideo extends StatefulWidget {
 pickVideo(ImageSource src, BuildContext context) async {
   final video = await ImagePicker().pickVideo(source: src);
   if (video != null) {
-    // ignore: use_build_context_synchronously
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => ConfirmVideoScreen(
-            videoFile: File(video.path), videoPath: video.path),
-      ),
-    );
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ConfirmVideoScreen(
+                videoFile: File(video.path), videoPath: video.path)));
+  } else {
+    Get.snackbar(
+        "Error In Selecting Video", "Please Choose A Different Video File");
   }
 }
 
@@ -31,9 +33,7 @@ optionMenu(BuildContext context) {
     builder: (context) => SimpleDialog(
       children: [
         SimpleDialogOption(
-          onPressed: () {
-            pickVideo(ImageSource.gallery, context);
-          },
+          onPressed: () => pickVideo(ImageSource.gallery, context),
           child: Row(
             children: const [
               Icon(Icons.image),
@@ -82,59 +82,62 @@ class _UploadVideoState extends State<UploadVideo> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(10),
-              child: const Text(
-                "You can choose to upload your video to TikTok app",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+        //zaboravljeni MediaQuery..
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(10),
+                child: const Text(
+                  "You can choose to upload your video to TikTok app",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
-            ),
-            const SizedBox(
-              height: 220,
-            ),
-            const Text(
-              "Choose from gallery",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: InkWell(
-                onTap: () => optionMenu(context),
-                child: Container(
-                  width: 190,
-                  height: 50,
-                  decoration: const BoxDecoration(color: Colors.red),
-                  child: const Center(
-                    child: Text(
-                      'Add video',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+              const SizedBox(
+                height: 220,
+              ),
+              const Text(
+                "Choose from gallery",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Center(
+                child: InkWell(
+                  onTap: () => optionMenu(context),
+                  child: Container(
+                    width: 190,
+                    height: 50,
+                    decoration: const BoxDecoration(color: Colors.red),
+                    child: const Center(
+                      child: Text(
+                        'Add video',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 270,
-            ),
-            const Text(
-              "Please be sure what you upolad, other users can see your video!",
-              textAlign: TextAlign.center,
-            ),
-          ],
+              const SizedBox(
+                height: 270,
+              ),
+              const Text(
+                "Please be sure what you upolad, other users can see your video!",
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
       ),
     );
